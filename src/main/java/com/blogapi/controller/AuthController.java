@@ -39,19 +39,24 @@ public class AuthController {
     @Autowired
     private JwtTokenProvider tokenProvider;
 
+
+
+
+
     //http://localhost:8080/api/auth/signin
     @PostMapping("/signin")
-    public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody LoginDto
-                                                                    loginDto){
-        Authentication authentication = authenticationManager.authenticate(new  // this object verifies username and passwor
-                UsernamePasswordAuthenticationToken(
+    public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody LoginDto loginDto){
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDto.getUsernameOrEmail(), loginDto.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        // get token form tokenProvider
 
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        // get token form tokenProvider
         String token = tokenProvider.generateToken(authentication);
+
         return ResponseEntity.ok(new JWTAuthResponse(token));
     }
+
 
     //http://localhost:8080/api/auth/signin
 //    @PostMapping("/signin")

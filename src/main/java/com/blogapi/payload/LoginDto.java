@@ -11,7 +11,7 @@ public class LoginDto { // encapsulation
     }
 
 //"usernameOrEmail":"mike@123",
- // "password":"testing"
+//  "password":"testing"
 
 //{
 //    "email":"nikita@gmail.com",
